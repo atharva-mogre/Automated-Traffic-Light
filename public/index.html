@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional real-time traffic light monitoring system using HC-SR04 sensor and Arduino">
+    <title>Traffic Light Detector | Real-time IoT Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🚦 Traffic Light Detector</h1>
+            <p class="subtitle">Real-time IoT monitoring with HC-SR04 Ultrasonic Sensor & Arduino Uno</p>
+            <div id="connection-status" class="status-badge disconnected">
+                <span class="status-dot"></span>
+                <span id="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Traffic Light Display -->
+            <section class="traffic-light-section">
+                <div class="traffic-light-container">
+                    <div class="traffic-light">
+                        <div class="light-housing">
+                            <div class="led red" id="red-light"></div>
+                            <div class="led yellow" id="yellow-light"></div>
+                            <div class="led green active" id="green-light"></div>
+                        </div>
+                    </div>
+                    <div class="current-state">
+                        <span class="state-label">Current Signal</span>
+                        <span class="state-value GREEN" id="state-display">GREEN</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Distance Meter -->
+            <section class="distance-section">
+                <div class="distance-card">
+                    <h2>📏 Distance Reading</h2>
+                    <div class="distance-display">
+                        <span class="distance-value" id="distance-value">0.0</span>
+                        <span class="distance-unit">cm</span>
+                    </div>
+                    <div class="distance-bar-container">
+                        <div class="distance-bar" id="distance-bar"></div>
+                    </div>
+                    <div class="distance-labels">
+                        <span class="label-item">
+                            <span class="indicator green-ind"></span>
+                            Near (≤15cm) - Vehicle Detected
+                        </span>
+                        <span class="label-item">
+                            <span class="indicator yellow-ind"></span>
+                            Transition (16-30cm)
+                        </span>
+                        <span class="label-item">
+                            <span class="indicator red-ind"></span>
+                            Far (>30cm) - No Vehicle
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Information -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h3>⚙️ System Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Sensor Type</span>
+                            <span class="info-value">HC-SR04 Ultrasonic</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Microcontroller</span>
+                            <span class="info-value">Arduino Uno</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Update Frequency</span>
+                            <span class="info-value">5 Hz (200ms)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last Data Update</span>
+                            <span class="info-value" id="last-update">Initializing...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Detection Range</span>
+                            <span class="info-value">2-400 cm</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Threshold Distance</span>
+                            <span class="info-value">15 cm</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Communication</span>
+                            <span class="info-value">WebSocket (Socket.IO)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Serial Baud Rate</span>
+                            <span class="info-value">9600 bps</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>🎯 Automated Traffic Light Control System</p>
+            <p class="footer-tech">Built with Arduino • Node.js • Express • Socket.IO • Real-time WebSocket
+                Communication</p>
+        </footer>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
